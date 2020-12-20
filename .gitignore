@@ -1,0 +1,23 @@
+# first version of gitignore
+# Joss Lei 20-12-20
+
+# --- cpp --- #
+
+# Compiled Object files
+*.o
+
+# Compiled Dynamic libraries
+*.so
+
+# Compiled Static libraries
+*.a
+*.lib
+
+# Executables
+*.out
+*.bin
+
+# --- building --- #
+bin/
+build/
+
