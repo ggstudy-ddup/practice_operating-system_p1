@@ -1,11 +1,12 @@
 .PHONY: all
 all: kernel.bin
 
-CPP = g++
-CPP_FLAGS = -m32
-AS = as
+CPP = i686-elf-g++
+AS = i686-elf-as
+LD = i686-elf-ld
+CPP_FLAGS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore -I \
+			./include/
 AS_FLAGS = --32
-LD = ld
 LD_FLAGS = -melf_i386
 
 OBJ = loader.o kernel.o
