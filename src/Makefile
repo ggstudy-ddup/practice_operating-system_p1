@@ -1,3 +1,5 @@
+.PHONY: all
+all: kernel.bin
 
 CPP = g++
 CPP_FLAGS = -m32
@@ -17,5 +19,14 @@ OBJ = loader.o kernel.o
 kernel.bin: linker.ld $(OBJ)
 	$(LD) $(LD_FLAGS) -T $< -o $@ $(OBJ)
 
-install: kernel.bin
+.PHONY: install
+install: ../assets/floopy.img kernel.bin
+	sudo mkdir -p /mnt/floopy
+	sudo mount $< /mnt/floopy 
+	cp kernel.bin /mnt/floopy/kernel
+	sudo umount /mnt/floopy
+
+.PHONY: clean
+clean:
+	rm -f *.o *.bin *.out
 
