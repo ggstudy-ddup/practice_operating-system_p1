@@ -17,7 +17,7 @@ OBJ = loader.o kernel.o
 %.o: %.s
 	$(AS) $(AS_FLAGS) -o $@ $<
 
-kernel.bin: linker.ld $(OBJ)
+kernel.bin: script/linker.ld $(OBJ)
 	$(LD) $(LD_FLAGS) -T $< -o $@ $(OBJ)
 
 ../assets/floppy.img: ../assets/floppy.img
