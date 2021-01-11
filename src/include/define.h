@@ -1,23 +1,26 @@
-#define M32 1
+#ifndef __INCLUDE_DEFINE_H__
+#define __INCLUDE_DEFINE_H__
 
+#define M32 1
 #ifdef M32
 
-typedef unsigned char uchar;
-typedef unsigned short ushort;
-typedef unsigned int uint;
+/* normal values */
+#define NULL 0
+#define NULLPTR 0
 
-/* define with bits */
-typedef unsigned char  u8;
-typedef unsigned short u16;
-typedef unsigned int   u32;
+#define TRUE 1
+#define FALSE 0
 
-/* define with its name */
-typedef unsigned char byte;
-typedef unsigned short word;
-typedef unsigned int dword;
+/* quick types */
+typedef unsigned char uchar, u8, byte;
+typedef unsigned short ushort, u16, word;
+typedef unsigned int uint, u32, dword;
 
 /* other types */
 typedef unsigned int size_t;
+#define BOOL int
 
-#endif
+#endif /* M32 */
+
+#endif /* !__INCLUDE_DEFINE_H__ */
 
