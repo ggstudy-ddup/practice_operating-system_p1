@@ -1,12 +1,4 @@
-#include <define.h>
 #include <machine.h>
-
-int main()
-{
-    outb(1, 2);
-    inb(1);
-    return 0;
-}
 
 inline void
 outb(word port, byte val)
