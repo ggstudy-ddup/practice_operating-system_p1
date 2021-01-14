@@ -1,24 +1,37 @@
 .PHONY: all
-all: kernel.bin
+all: build
+.PHONY: build
+build: kernel.bin
 
-C = i686-elf-gcc
-AS = i686-elf-as
-LD = i686-elf-ld
-C_FLAGS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-exceptions -fno-leading-underscore \
-			-I ./include/
+C_DEBUG_FLAG = -ggdb -gstabs+
+
+C = gcc
+AS = as
+LD = ld
+C_FLAGS = -c -Wall -m32 -nostdinc -nostdlib -fno-builtin -fno-stack-protector \
+			-I $(HOME)/include/ \
+			$(C_DEBUG_FLAG)
 AS_FLAGS = --32
-LD_FLAGS = -melf_i386
+LD_FLAGS = -T $(HOME)/scripts/linker.ld -m elf_i386 -nostdlib
 
-OBJ = loader.o kernel.o
+HOME := $(shell pwd)
+C_SRC := $(shell find . -name "*.c")
+AS_SRC := $(shell find . -name "*.s")
 
-%.o : %.c
+C_OBJ := $(shell find $(HOME)/kernel -name "*.c")
+C_OBJ += $(shell find $(HOME)/libs -name "*.c")
+C_OBJ := $(C_OBJ:.c=.c.o)
+AS_OBJ := $(shell find $(HOME)/kernel -name "*.s")
+AS_OBJ := $(AS_OBJ:.s=.s.o)
+
+$(C_OBJ): $(C_SRC)
 	$(C) $(C_FLAGS) -o $@ -c $<
 
-%.o: %.s
+$(AS_OBJ): $(AS_SRC)
 	$(AS) $(AS_FLAGS) -o $@ $<
 
-kernel.bin: script/linker.ld $(OBJ)
-	$(LD) $(LD_FLAGS) -T $< -o $@ $(OBJ)
+kernel.bin: $(AS_OBJ) $(C_OBJ) $(HOME)/scripts/linker.ld 
+	$(LD) $(LD_FLAGS) -o $@ $(AS_OBJ) $(C_OBJ)
 
 ../assets/floppy.img: ../assets/floppy.img
 
@@ -31,5 +44,6 @@ install: ../assets/floppy.img kernel.bin
 
 .PHONY: clean
 clean:
-	rm -f *.o *.bin *.out
+	rm -f $(AS_OBJ)
+	rm -f $(C_OBJ)
 
