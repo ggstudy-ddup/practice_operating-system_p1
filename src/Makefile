@@ -5,32 +5,30 @@ build: kernel.bin
 
 C_DEBUG_FLAG = -ggdb -gstabs+
 
-C = gcc
-AS = as
-LD = ld
+C = ~/.opt/cross/bin/i686-elf-gcc
+AS = ~/.opt/cross/bin/i686-elf-as
+LD = ~/.opt/cross/bin/i686-elf-ld
 C_FLAGS = -c -Wall -m32 -nostdinc -nostdlib -fno-builtin -fno-stack-protector \
-			-I $(HOME)/include/ \
-			$(C_DEBUG_FLAG)
+			-I $(H)/include/
 AS_FLAGS = --32
-LD_FLAGS = -T $(HOME)/scripts/linker.ld -m elf_i386 -nostdlib
+LD_FLAGS = -T $(H)/scripts/linker.ld -m elf_i386 -nostdlib
 
-HOME := $(shell pwd)
-C_SRC := $(shell find . -name "*.c")
-AS_SRC := $(shell find . -name "*.s")
+H := $(shell pwd)
 
-C_OBJ := $(shell find $(HOME)/kernel -name "*.c")
-C_OBJ += $(shell find $(HOME)/libs -name "*.c")
-C_OBJ := $(C_OBJ:.c=.c.o)
-AS_OBJ := $(shell find $(HOME)/kernel -name "*.s")
-AS_OBJ := $(AS_OBJ:.s=.s.o)
+C_SRC := $(shell find $(H)/kernel -name "*.c")
+C_SRC += $(shell find $(H)/libs -name "*.c")
+AS_SRC := $(shell find $(H)/kernel -name "*.s")
+
+C_OBJ := $(C_SRC:.c=.c.o)
+AS_OBJ := $(AS_SRC:.s=.s.o)
 
 $(C_OBJ): $(C_SRC)
-	$(C) $(C_FLAGS) -o $@ -c $<
+	$(C) $(C_FLAGS) -o $@ -c $(@:.c.o=.c)
 
 $(AS_OBJ): $(AS_SRC)
 	$(AS) $(AS_FLAGS) -o $@ $<
 
-kernel.bin: $(AS_OBJ) $(C_OBJ) $(HOME)/scripts/linker.ld 
+kernel.bin: $(AS_OBJ) $(C_OBJ) $(H)/scripts/linker.ld 
 	$(LD) $(LD_FLAGS) -o $@ $(AS_OBJ) $(C_OBJ)
 
 ../assets/floppy.img: ../assets/floppy.img
@@ -46,4 +44,5 @@ install: ../assets/floppy.img kernel.bin
 clean:
 	rm -f $(AS_OBJ)
 	rm -f $(C_OBJ)
+	rm -f $(H)/kernel.bin
 
