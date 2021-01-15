@@ -1,4 +1,4 @@
-#include <string.h>
+#include <define.h>
 
 #ifndef __INCLUDE_STRING_H__
 #define __INCLUDE_STRING_H__
