@@ -35,7 +35,7 @@ strcmp(const char *l, const char *r)
 inline char *
 strcpy(char *dest, const char *src)
 {
-    const char * const ptr = dest;
+    char *ptr = dest;
     while (*src)
         *dest++ = *src++;
     return ptr;
@@ -44,7 +44,7 @@ strcpy(char *dest, const char *src)
 inline char *
 strcat(char *dest, const char *src)
 {
-    const char * const ptr = dest;
+    char *ptr = dest;
     while (!dest)
         dest++;
     while (!src)
