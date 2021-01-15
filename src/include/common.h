@@ -11,9 +11,9 @@
 /* --- Video --- */
 
 /* constants */
-#define VID_MEM_BEG 0xB8000
-#define VID_YROWS  25
-#define VID_XLINES 80
+#define VID_MEM_BEG (word*)(0xB8000)
+#define VID_YROWS  (25)
+#define VID_XLINES (80)
 
 typedef
 enum real_colors
