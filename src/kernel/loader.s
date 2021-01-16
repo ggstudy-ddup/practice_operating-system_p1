@@ -12,9 +12,16 @@
 .global loader
 
 loader:
+    cli     # disable interrupt
+
+    # prepare the stack
 	movl $kernel_stack, %esp
-    pushl %eax
-    pushl %ebx
+    and $0xFFFFFFF0, %esp       # 16 byte align
+    
+    # give parameters to kernel_main
+    pushl %eax  # Magic
+    pushl %ebx  # Multiboot structure
+
 	call kernel_main
 loop:
     cli
