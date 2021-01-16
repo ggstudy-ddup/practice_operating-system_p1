@@ -1,4 +1,4 @@
-#include <machine.h>
+#include <bottom.h>
 
 inline void
 outb(word port, byte val)
