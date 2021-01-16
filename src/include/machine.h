@@ -4,10 +4,10 @@
 #define __INCLUDE_MACHINE_H__
 
 /* write a byte out, to the port */
-inline void outb(word port, byte val);
+void outb(word port, byte val);
 
 /* read a byte in, from the port */
-inline byte inb(word port);
+byte inb(word port);
 
 #endif  /* !__INCLUDE_MACHINE_H__ */
 
