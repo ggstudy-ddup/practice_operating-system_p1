@@ -5,9 +5,9 @@ build: kernel.bin
 
 C_DEBUG_FLAG = -ggdb -gstabs+
 
-C = ~/.opt/cross/bin/i686-elf-gcc
-AS = ~/.opt/cross/bin/i686-elf-as
-LD = ~/.opt/cross/bin/i686-elf-ld
+C = gcc
+AS = as
+LD = ld
 C_FLAGS = -c -Wall -m32 -nostdinc -nostdlib -fno-builtin -fno-stack-protector \
 			-I $(H)/include/
 AS_FLAGS = --32
