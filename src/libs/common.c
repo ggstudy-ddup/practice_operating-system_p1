@@ -18,7 +18,18 @@ clear_screen()
 }
 
 void
-put_str(const char *s);
+put_str(const char *s)
+{
+    byte attribute_byte = (0 << 4) | (15 & 0x0F);
+    for (; *s; s++)
+    {
+        switch (*s)
+        {
+        default:
+            *vid_pos++ = (word)(*s | (attribute_byte << 8));
+        }
+    }
+}
 
 void
 put_str_color(const char *s, int bc, int fc);
