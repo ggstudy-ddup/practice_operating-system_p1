@@ -1,6 +1,9 @@
 #include <define.h>
+#include <common.h>
 void kernel_main(void *multiboot_struct, dword magic)
 {
-    while (1);
+    clear_screen();
+    while (TRUE)
+        asm volatile("hlt");
 }
 
