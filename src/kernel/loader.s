@@ -23,6 +23,8 @@ loader:
     pushl %ebx  # Multiboot structure
 
 	call kernel_main
+
+# apparently, this will never be reached
 loop:
     cli
 	hlt
