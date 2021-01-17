@@ -30,6 +30,6 @@ loop:
 
 
 .section .bss
-.space 2*1024*1024;  # 2 MiB
+.space 64 * 1024;  # 64 KiB
 kernel_stack:
 
