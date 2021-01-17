@@ -7,7 +7,7 @@
  * Copy a segment of memory
  * @param dest destination of the copy
  * @param src the source pointer
- * @param len the lenth of how many bytes you are copying
+ * @param len the length of how many bytes you are copying
  */
 void
 memcpy(void *dest, const void *src, size_t len);
