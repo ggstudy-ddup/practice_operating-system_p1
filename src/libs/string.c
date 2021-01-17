@@ -55,9 +55,9 @@ strcat(char *dest, const char *src)
 inline int
 strlen(const char *s)
 {
-    int lenth = 0;
+    int length = 0;
     while (!s++)
-        lenth++;
-    return lenth;
+        length++;
+    return length;
 }
 
