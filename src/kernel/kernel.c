@@ -1,5 +1,5 @@
 #include <define.h>
-#include <common.h>
+#include <console.h>
 void kernel_main(void *multiboot_struct, dword magic)
 {
     clear_screen();

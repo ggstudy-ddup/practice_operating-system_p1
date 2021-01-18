@@ -1,4 +1,4 @@
-#include <common.h>
+#include <console.h>
 
 /* cursor position */
 static byte cursor_x = 0;
