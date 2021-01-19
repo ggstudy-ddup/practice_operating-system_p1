@@ -17,6 +17,7 @@ H := $(shell pwd)
 
 C_SRC := $(shell find $(H)/kernel -name "*.c")
 C_SRC += $(shell find $(H)/libs -name "*.c")
+C_SRC += $(shell find $(H)/drivers -name "*.c")
 AS_SRC := $(shell find $(H)/kernel -name "*.s")
 
 C_OBJ := $(C_SRC:.c=.c.o)

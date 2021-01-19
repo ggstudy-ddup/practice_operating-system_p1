@@ -1,4 +1,4 @@
-#include <console.h>
+#include <drivers/console.h>
 
 /* cursor position */
 static byte cursor_x = 0;
