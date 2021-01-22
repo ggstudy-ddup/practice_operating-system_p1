@@ -1,7 +1,7 @@
 #ifndef __INCLUDE_STRNUM_H__
 #define __INCLUDE_STRNUM_H__
 
-#include <define.h>
+#include <types.h>
 
 /* int to ascii */
 char * itoa(int i, char * buf);

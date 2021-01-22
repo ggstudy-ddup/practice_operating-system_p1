@@ -6,7 +6,7 @@
 #ifndef __INCLUDE_COMMON_H__
 #define __INCLUDE_COMMON_H__
 
-#include <define.h>
+#include <types.h>
 #include <port.h>
 #include <string.h>
 
