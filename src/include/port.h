@@ -1,4 +1,4 @@
-#include <define.h>
+#include <types.h>
 
 #ifndef __INCLUDE_MACHINE_H__
 #define __INCLUDE_MACHINE_H__
