@@ -1,10 +1,10 @@
 /*
- * common.h
- * defines some common functions needed for the incomplete OS
+ * console.h
+ * defines some video memory related operation
  *  
  */
-#ifndef __INCLUDE_COMMON_H__
-#define __INCLUDE_COMMON_H__
+#ifndef __INCLUDE_DRIVERS_CONSOLE_H__
+#define __INCLUDE_DRIVERS_CONSOLE_H__
 
 #include <types.h>
 #include <port.h>
@@ -58,5 +58,4 @@ void put_str_color(const char *s, int bc, int fc);
 
 /* --- --- */
 
- #endif /* !__INCLUDE_COMMON_H__ */
-
+ #endif /* !__INCLUDE_DRIVERS_CONSOLE_H__ */
