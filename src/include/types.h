@@ -20,6 +20,12 @@ typedef unsigned int uint, u32, dword;
 typedef unsigned int size_t;
 #define BOOL int
 
+/* args */
+typedef byte *va_list;
+#define va_start(ptr, first) (p = (va_list)&first + sizeof(first))
+#define va_arg(ptr, type) (*(type*)((p += sizeof(type)) - sizeof(type)))
+#define va_end(ptr)
+
 #endif /* M32 */
 
 #endif /* !__INCLUDE_DEFINE_H__ */
