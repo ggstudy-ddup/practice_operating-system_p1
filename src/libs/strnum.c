@@ -1,10 +1,11 @@
 #include <strnum.h>
 #include <string.h>
 
-char *
+int
 itoa(int num, char * buffer)
 {
-    char buf[12] = { 0 };
+    char buf[12];
+    buf[11] = NULL;
     BOOL sign = FALSE;
     if (num < 0)
     {
@@ -19,6 +20,6 @@ itoa(int num, char * buffer)
     }
     if (sign) buf[i--] = '-';
     memcpy(buffer, buf + i + 1, 12 - i + 1);
-    return buffer;
+    return 12 - i + 2;
 }
 

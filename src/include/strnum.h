@@ -4,7 +4,7 @@
 #include <types.h>
 
 /* int to ascii */
-char * itoa(int i, char * buf);
+int itoa(int i, char * buf);
 
 /* long to ascii */
 // char * ltoa(long i, 
