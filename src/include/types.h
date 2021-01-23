@@ -22,9 +22,9 @@ typedef unsigned int size_t;
 
 /* args */
 typedef byte *va_list;
-#define va_start(ptr, first) (p = (va_list)&first + sizeof(first))
-#define va_arg(ptr, type) (*(type*)((p += sizeof(type)) - sizeof(type)))
-#define va_end(ptr)
+#define va_start(p, first) (p = (va_list)&first + sizeof(first))
+#define va_arg(p, type) (*(type*)((p += sizeof(type)) - sizeof(type)))
+#define va_end(p)
 
 #endif /* M32 */
 
