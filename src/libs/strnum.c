@@ -19,7 +19,7 @@ itoa(int num, char * buffer)
         num /= 10;
     }
     if (sign) buf[i--] = '-';
-    memcpy(buffer, buf + i + 1, 12 - i + 1);
-    return 12 - i + 2;
+    memcpy(buffer, buf + i + 1, 12 - i - 1);
+    return 12 - i - 2;
 }
 
