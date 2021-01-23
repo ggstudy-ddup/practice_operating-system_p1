@@ -9,7 +9,6 @@ void kernel_main(void *multiboot_struct, dword magic)
     clear_screen();
     put_str("Hello world, new OS!\n");
     put_str_color("Hello world, colorful new OS!\n", rc_green, rc_light_magenta);
-    put_str_color(itoa(10, buf), rc_green, rc_light_magenta);
 
     /* uncomment if you want to test */
 
