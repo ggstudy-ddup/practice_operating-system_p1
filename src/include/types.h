@@ -21,7 +21,7 @@ typedef unsigned int size_t;
  * Common defines
  */
 /* normal values */
-#define NULL ((void*)(0))
+#define NULL (0)
 #define NULLPTR ((void*)0)
 /* args */
 typedef byte *va_list;
