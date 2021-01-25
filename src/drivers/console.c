@@ -32,23 +32,19 @@ set_cursor_pos()
 void
 scroll_up()
 {
+    word *pvid = VID_MEM_BEG;
     /* substitute the lines by their next lines */
-    for (int i = 0; i < VID_YMAX - 1 /* without the last line */; i++)
+    for (int i = 0; i < (VID_YMAX - 1) * VID_XMAX; i++)
     {
-        memcpy(VID_MEM_BEG +                    /* Starting addr */
-                    i                           /* line number */
-                    * sizeof(word) * VID_XMAX,  /* offset bytes per line */
-               VID_MEM_BEG + (i + 1) * sizeof(word) * VID_XMAX,
-               sizeof(word) * VID_XMAX);        /* line len */
+        *pvid = *(pvid + VID_XMAX);
+        pvid++;
     }
+    /* blank */
+    byte attribute_byte = (0 << 4) | (15 & 0x0F);
+    word blank = ' ' | (attribute_byte << 8);
     /* clear the last line */
-    bzero(VID_MEM_BEG +                 /* Starting addr */
-            (VID_YMAX - 1)              /* the last line */
-            * sizeof(word) * VID_XMAX,  /* offset bytes per line */
-          sizeof(word) * VID_XMAX);     /* line len */
-    /* set the cursor */
-    if (cursor_y)   /* cursor_y != 0 */
-        cursor_y--; /* keep the cursor in the same ouput line */
+    for (int i = 0; i < VID_XMAX; i++)
+        *pvid++ =  blank;
 }
 
 void
@@ -104,8 +100,11 @@ put_char(char c, int bg, int fg)
         cursor_x = 0;
         cursor_y++;
     }
-    if (VID_YMAX <= cursor_y)
+    if (cursor_y >= VID_YMAX)
+    {
+        cursor_y = VID_YMAX - 1;
         scroll_up();
+    }
 
     /* refresh the cursor position */
     set_cursor_pos();
