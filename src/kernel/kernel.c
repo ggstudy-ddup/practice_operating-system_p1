@@ -7,11 +7,10 @@ void kernel_main(void *multiboot_struct, dword magic)
     clear_screen();
     put_str("0Hello world, new OS!\n");
     put_str_color("1Hello world, colorful new OS!\n", rc_green, rc_light_magenta);
-    char buffer[64] = { 0 };
+    printk("print test!\n");
     for (int i = 0; i < 100; i++)
     {
-        sprintf(buffer, "Test of sprintf(), for the %x time...\n", i);
-        put_str(buffer);
+        printk("print test number %x!\n", i);
     }
 
     /* uncomment if you want to test */
