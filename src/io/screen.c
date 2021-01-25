@@ -1,10 +1,10 @@
 #include <io/screen.h>
 
+static char buffer[PRINTK_BUF_SIZE] = { 0 };
+
 int
-sprintf(char * buf, char * format, ...)
+sprintf(char * buf, const char * format, va_list list)
 {
-    va_list list;
-    va_start(list, format);
     int count = 0;
     while (*format)
     {
@@ -24,7 +24,19 @@ sprintf(char * buf, char * format, ...)
             *(char*)(buf + count++) = *format;
         ++format;
     }
-    va_end(list);
     return count;
 }
 
+int
+printk(const char * format, ...)
+{
+    bzero(buffer, PRINTK_BUF_SIZE);
+    /* start format process */
+    va_list list;
+    va_start(list, format);
+    int count = sprintf(buffer, format, list);
+    va_end(list);
+    /* print the str */
+    put_str(buffer);
+    return count;
+}

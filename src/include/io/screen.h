@@ -2,6 +2,7 @@
 #define __INCLUDE_IO_SCREEN_H__
 
 #include <types.h>
+#include <drivers/console.h>
 #include <strnum.h>
 
 #define PRINTK_BUF_SIZE ((int)(VID_XMAX * VID_YMAX))
@@ -13,7 +14,7 @@
  * @param list the variable parameter list
  * @ret the length of output str
  */
-int sprintf(char * buf, cosnt char * format, va_list list);
+int sprintf(char * buf, const char * format, va_list list);
 
 /*
  * Print function for kernel
