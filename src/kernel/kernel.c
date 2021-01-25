@@ -1,14 +1,18 @@
 #include <types.h>
 #include <drivers/console.h>
-#include <strnum.h>
-
-static char buf[12]  = { 0 };
+#include <io/screen.h>
 
 void kernel_main(void *multiboot_struct, dword magic)
 {
     clear_screen();
-    put_str("Hello world, new OS!\n");
-    put_str_color("Hello world, colorful new OS!\n", rc_green, rc_light_magenta);
+    put_str("0Hello world, new OS!\n");
+    put_str_color("1Hello world, colorful new OS!\n", rc_green, rc_light_magenta);
+    char buffer[64] = { 0 };
+    for (int i = 0; i < 100; i++)
+    {
+        sprintf(buffer, "Test of sprintf(), for the %x time...\n", i);
+        put_str(buffer);
+    }
 
     /* uncomment if you want to test */
 
