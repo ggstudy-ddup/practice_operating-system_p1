@@ -1,7 +1,7 @@
 #include <io/screen.h>
 
 int
-my_sprintf(char * buf, char * format, ...)
+sprintf(char * buf, char * format, ...)
 {
     va_list list;
     va_start(list, format);

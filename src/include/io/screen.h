@@ -2,6 +2,7 @@
 #define __INCLUDE_IO_SCREEN_H__
 
 #include <types.h>
+#include <strnum.h>
 
 int sprintf(char * buf, char * format, ...);
 
