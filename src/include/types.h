@@ -5,11 +5,11 @@
 #ifdef M32
 
 /* normal values */
-#define NULL 0
-#define NULLPTR 0
+#define NULL ((void*)(0))
+#define NULLPTR ((void*)0)
 
-#define TRUE 1
-#define FALSE 0
+#define TRUE (1)
+#define FALSE (0)
 
 /* quick types */
 typedef unsigned char uchar, u8, byte;
