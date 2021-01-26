@@ -14,7 +14,7 @@ sprintf(char * buf, const char * format, va_list list)
             switch (*format)
             {
             case 'x':
-                count += itoa(va_arg(list, int), buf + count);
+                count += uitox(va_arg(list, int), buf + count);
                 break;
             default:
                 break;
