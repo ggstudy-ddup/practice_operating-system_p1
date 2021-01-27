@@ -8,9 +8,9 @@
 #define TRUE (1)
 #define FALSE (0)
 /* quick types */
-typedef unsigned char uchar, u8, byte;
-typedef unsigned short ushort, u16, word;
-typedef unsigned int uint, u32, dword;
+typedef unsigned char   uchar,  uint8_t,    u8,     byte;
+typedef unsigned short  ushort, uint16_t,   u16,    word;
+typedef unsigned int    uint,   uint32_t,   u32,    dword;
 /* other types */
 typedef unsigned int size_t;
 #define BOOL int
