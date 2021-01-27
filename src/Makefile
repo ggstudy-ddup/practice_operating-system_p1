@@ -9,7 +9,7 @@ C = gcc
 AS = as
 LD = ld
 C_FLAGS = -c -Wall -m32 -nostdinc -nostdlib -fno-builtin -fno-stack-protector \
-			$(C_DEBUG_FLAG)		\
+			-O1 $(C_DEBUG_FLAG)		\
 			-I $(H)/include/
 
 AS_FLAGS = --32
