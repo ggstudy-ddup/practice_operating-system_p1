@@ -1,5 +1,5 @@
 # some ignore
-# Joss Lei 01-01-21
+# Joss Lei 01-27-21
 
 # --- cpp --- #
 
@@ -20,4 +20,7 @@
 # --- building --- #
 bin/
 build/
+
+# Editor
+.vscode/
 
