@@ -9,7 +9,9 @@ C = gcc
 AS = as
 LD = ld
 C_FLAGS = -c -Wall -m32 -nostdinc -nostdlib -fno-builtin -fno-stack-protector \
+			-O1 $(C_DEBUG_FLAG)		\
 			-I $(H)/include/
+
 AS_FLAGS = --32
 LD_FLAGS = -T $(H)/scripts/linker.ld -m elf_i386 -nostdlib
 

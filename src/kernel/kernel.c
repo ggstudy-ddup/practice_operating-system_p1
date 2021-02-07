@@ -8,9 +8,9 @@ void kernel_main(void *multiboot_struct, dword magic)
     put_str("0Hello world, new OS!\n");
     put_str_color("1Hello world, colorful new OS!\n", rc_green, rc_light_magenta);
     printk("print test!\n");
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 0xFF; i++)
     {
-        printk("print test number %x!\n", i);
+        printk("print test number 0x%x!\n", i);
     }
 
     /* uncomment if you want to test */

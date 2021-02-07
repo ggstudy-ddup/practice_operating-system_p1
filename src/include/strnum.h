@@ -3,8 +3,11 @@
 
 #include <types.h>
 
-/* int to ascii */
+/* int to ascii digital */
 int itoa(int i, char * buf);
+
+/* unsigned int to ascii hexidecimal */
+int uitox(int i, char * buf);
 
 /* long to ascii */
 // char * ltoa(long i, 
